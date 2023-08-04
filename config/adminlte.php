@@ -302,8 +302,11 @@ return [
         // ],
 
         // Sidebar items:
+        ['header' => 'Configuración'],
         [
-            'text'
+            'text'=>"Usuarios",
+            'url'=>"/user",
+            'can'=>'read_user'
         ]
         // [
         //     'type' => 'sidebar-menu-search',
