@@ -17,6 +17,7 @@ class RolesPermissionsSeeder extends Seeder
     {
 
         $admin_role = Role::updateOrCreate(["name" => "admin"]);
+        Role::updateOrCreate(["name" => "user"]);
 
         $user = User::where("email","=","admin@admin")->first();
 

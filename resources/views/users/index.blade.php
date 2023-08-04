@@ -38,7 +38,8 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ implode(',', $user->getRoleNames()->toArray()) }}</td>
                                 <td class="text-center">
-                                    <button class="btn btn-primary"><i class="fas fa-edit"></i></button>
+                                    <a href="{{ route('users.edit', ['user' => $user]) }}" class="btn btn-primary"><i
+                                            class="fas fa-edit"></i></a>
                                     <a href="{{ route('users.show', ['user' => $user, 'delete' => true]) }}"
                                         class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                 </td>

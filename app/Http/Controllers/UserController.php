@@ -51,17 +51,26 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        //
+        return view("users.edit")->with(['user' => $user]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->fill($request->except('password'));
+
+        if ($request->has('password') && $request->password != null) {
+            $user->password = $request->password;
+        }
+
+        $user->save();
+        $user->syncRoles([$request->role]);
+
+        return redirect()->route("users.index");
     }
 
     /**
