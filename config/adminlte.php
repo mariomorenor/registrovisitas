@@ -304,9 +304,11 @@ return [
         // Sidebar items:
         ['header' => 'Configuración'],
         [
-            'text'=>"Usuarios",
-            'url'=>"/user",
-            'can'=>'read_user'
+            'text' => "Usuarios",
+            'route' => "users.index",
+            'icon'=>'fas fa-users',
+            'can' => 'read_user',
+            'active' => ["users/*"]
         ]
         // [
         //     'type' => 'sidebar-menu-search',
