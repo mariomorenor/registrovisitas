@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string("nationality");
             $table->string("scholarship")->nullable();
             $table->integer('level')->nullable();
-            $table->foreignId('contact_id')->constrained("contacts");
+            $table->foreignId('contact_id')->nullable()->constrained("contacts");
 
             $table->timestamps();
         });

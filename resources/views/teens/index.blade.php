@@ -38,7 +38,7 @@
                                 <td>{{ $teen->full_name }}</td>
                                 <td>{{ $teen->identification}}</td>
                                 <td>{{ $teen->address}}</td>
-                                <td>{{ $teen->contact->full_name}}</td>
+                                <td>{{ $teen->contact?->full_name}}</td>
                                 <td class="text-center">
                                     <a href="{{ route('teens.edit', ['teen' => $teen]) }}" class="btn btn-primary"><i
                                             class="fas fa-edit"></i></a>

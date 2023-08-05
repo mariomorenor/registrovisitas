@@ -22,8 +22,9 @@ class TeenController extends Controller
      */
     public function create()
     {
+        $nationalities = Teen::all()->pluck("nationality");
         $contacts = Contact::all();
-        return view("teens.create")->with(["contacts" => $contacts]);
+        return view("teens.create")->with(["contacts" => $contacts, "nationalities" => $nationalities]);
     }
 
     /**
@@ -31,15 +32,21 @@ class TeenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $teen = new Teen();
+        $teen->fill($request->all());
+        $teen->save();
+
+        return redirect()->route("teens.index");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Teen $teen)
+    public function show(Teen $teen, Request $request)
     {
-        //
+        if ($request->has("delete")) {
+            return view("teens.delete")->with(["teen" => $teen]);
+        }
     }
 
     /**
@@ -47,7 +54,9 @@ class TeenController extends Controller
      */
     public function edit(Teen $teen)
     {
-        //
+        $nationalities = Teen::all()->pluck("nationality");
+        $contacts = Contact::all();
+        return view("teens.edit")->with(["teen" => $teen, "nationalities" => $nationalities, "contacts" => $contacts]);
     }
 
     /**
@@ -55,7 +64,10 @@ class TeenController extends Controller
      */
     public function update(Request $request, Teen $teen)
     {
-        //
+        $teen->fill($request->all());
+        $teen->save();
+
+        return redirect()->route("teens.index");
     }
 
     /**
@@ -63,6 +75,8 @@ class TeenController extends Controller
      */
     public function destroy(Teen $teen)
     {
-        //
+        $teen->delete();
+
+        return redirect()->route("teens.index");
     }
 }
