@@ -291,14 +291,19 @@ return [
 
     'menu' => [
         [
-            'text'=> 'Contactos',
-            'route'=> 'contacts.index',
-            'icon'=> '',
-            'active'=> ['contacts/*'],
-            'can'=> 'read_contact'
+            'text' => 'Usuarios',
+            'route' => 'teens.index',
+            'icon' => 'fas fa-user-friends',
+            'active' => ['teens/*'],
+            'can' => 'read_teen'
         ],
-
-        
+        [
+            'text' => 'Contactos',
+            'route' => 'contacts.index',
+            'icon' => 'fas fa-address-book',
+            'active' => ['contacts/*'],
+            'can' => 'read_contact'
+        ],
         ['header' => 'Configuración'],
         [
             'text' => "Usuarios",
@@ -377,17 +382,23 @@ return [
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
+                    'asset' => true,
+                    'location' => 'vendor/select2/js/select2.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
+                    'asset' => true,
+                    'defer' => true,
+                    'location' => 'vendor/select2-bootstrap4-theme/select2-bootstrap4.min.css',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/select2/css/select2.min.css',
                 ],
             ],
         ],

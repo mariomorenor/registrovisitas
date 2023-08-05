@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use App\Models\Teen;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class TeenController extends Controller
      */
     public function index()
     {
-        //
+        $teens = Teen::all();
+        return view("teens.index")->with(["teens" => $teens]);
     }
 
     /**
@@ -20,7 +22,8 @@ class TeenController extends Controller
      */
     public function create()
     {
-        //
+        $contacts = Contact::all();
+        return view("teens.create")->with(["contacts" => $contacts]);
     }
 
     /**
