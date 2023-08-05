@@ -1,15 +1,15 @@
 @extends('adminlte::page')
 
-@section('title', 'Usuarios')
+@section('title', 'Contactos')
 
 @section('content_header')
     <div class="container">
         <div class="card p-3">
             <div class="card-content">
                 <div class="d-flex justify-content-between">
-                    <h1 class="m-0 text-dark">Usuarios</h1>
+                    <h1 class="m-0 text-dark">Contactos</h1>
                     <div class="">
-                        <a href="{{ route('users.create') }}" class="btn btn-success"><i
+                        <a href="{{ route('contacts.create') }}" class="btn btn-success"><i
                                 class="fas fa-plus-circle"></i>Nuevo</a>
                     </div>
                 </div>
@@ -25,22 +25,22 @@
                 <table class="display table" id="table" width="100%">
                     <thead class="table-dark">
                         <tr>
-                            <th>Nombre</th>
-                            <th>Email</th>
-                            <th>Roles</th>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>Telefono</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $user)
+                        @foreach ($contacts as $contact)
                             <tr>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ implode(',', $user->getRoleNames()->toArray()) }}</td>
+                                <td>{{ $contact->name }}</td>
+                                <td>{{ $contact->last_name }}</td>
+                                <td>{{ $contact->phone}}</td>
                                 <td class="text-center">
-                                    <a href="{{ route('users.edit', ['user' => $user]) }}" class="btn btn-primary"><i
+                                    <a href="{{ route('contacts.edit', ['contact' => $contact]) }}" class="btn btn-primary"><i
                                             class="fas fa-edit"></i></a>
-                                    <a href="{{ route('users.show', ['user' => $user, 'delete' => true]) }}"
+                                    <a href="{{ route('contacts.show', ['contact' => $contact, 'delete' => true]) }}"
                                         class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>

@@ -12,7 +12,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $contacts = Contact::all();
+
+        return view("contacts.index")->with(['contacts' => $contacts]);
     }
 
     /**
@@ -20,7 +22,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        return view("contacts.create");
     }
 
     /**
@@ -28,23 +30,31 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contact = new Contact();
+        $contact->fill($request->all());
+
+        $contact->save();
+
+        return redirect()->route("contacts.index");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Contact $contact)
+    public function show(Contact $contact, Request $request)
     {
-        //
+        if ($request->has("delete")) {
+            return view("contacts.delete")->with(["contact" => $contact]);
+        }
     }
+
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Contact $contact)
     {
-        //
+        return view("contacts.edit")->with(["contact" => $contact]);
     }
 
     /**
@@ -52,7 +62,10 @@ class ContactController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
-        //
+        $contact->fill($request->all());
+        $contact->save();
+
+        return redirect()->route("contacts.index");
     }
 
     /**
@@ -60,6 +73,8 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+
+        return redirect()->route("contacts.index");
     }
 }
