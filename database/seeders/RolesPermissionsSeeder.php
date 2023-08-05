@@ -17,9 +17,9 @@ class RolesPermissionsSeeder extends Seeder
     {
 
         $admin_role = Role::updateOrCreate(["name" => "admin"]);
-        Role::updateOrCreate(["name" => "user"]);
+        $user_role = Role::updateOrCreate(["name" => "user"]);
 
-        $user = User::where("email","=","admin@admin")->first();
+        $user = User::where("email", "=", "admin@admin")->first();
 
         $user->assignRole("admin");
 
@@ -31,7 +31,12 @@ class RolesPermissionsSeeder extends Seeder
             foreach ($permissions as $permission) {
                 $permission = Permission::updateOrCreate(["name" => "{$permission}_{$model}"]);
                 $admin_role->givePermissionTo($permission);
+                $user_role->givePermissionTo($permission);
             }
+        }
+
+        foreach ($permissions as $permission) {
+            $user_role->revokePermissionTo("{$permission}_user");
         }
     }
 }

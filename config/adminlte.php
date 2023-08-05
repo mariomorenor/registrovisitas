@@ -306,6 +306,11 @@ return [
         ],
         ['header' => 'Configuración'],
         [
+            'text'=> 'Mi Perfil',
+            'route'=> 'profile',
+            'icon' => 'fas fa-address-card'
+        ],
+        [
             'text' => "Usuarios",
             'route' => "users.index",
             'icon' => 'fas fa-users',
