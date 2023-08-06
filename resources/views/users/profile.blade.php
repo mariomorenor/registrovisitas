@@ -4,7 +4,8 @@
 
 @section('content')
     <div class="container pt-2">
-        <form action="{{ route('users.update', ['user' => $user]) }}" enctype="multipart/form-data" method="POST" class="bg-white shadow rounded border p-4">
+        <form action="{{ route('users.update', ['user' => $user]) }}" enctype="multipart/form-data" method="POST"
+            class="bg-white shadow rounded border p-4">
             @csrf
             @method('PUT')
             <input type="hidden" name="profile">
@@ -37,15 +38,24 @@
                 <div class="col-12 col-sm-4">
                     <div class="form-group">
                         <label for="password">Contrasena</label>
-                        <input type="password" name="password" class="form-control"
+                        <input type="password" name="password"
+                            class="form-control @error('password')
+                            is-invalid
+                        @enderror"
                             placeholder="Si no desea cambiar deje en blanco">
+                        @error('password')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="col-12 col-sm-4">
                     <div class="form-group">
-                        <label for="password_confirm">Confirmacion Contrasena</label>
-                        <input type="password_confirm" name="password_confirm" class="form-control"
+                        <label for="password_confirmation">Confirmacion Contrasena</label>
+                        <input type="password" name="password_confirmation" class="form-control"
                             placeholder="Debe conicidar con la Contrasena">
+                        @error('password_confirm')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
             </div>
