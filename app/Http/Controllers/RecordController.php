@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Record;
+use App\Models\Teen;
 use Illuminate\Http\Request;
 
 class RecordController extends Controller
@@ -12,7 +13,8 @@ class RecordController extends Controller
      */
     public function index()
     {
-        //
+        $records = Record::all();
+        return view("records.index")->with(["records" => $records]);
     }
 
     /**
@@ -20,7 +22,11 @@ class RecordController extends Controller
      */
     public function create()
     {
-        //
+        $code = Record::max("code") ?? 1;
+        $str_code = str_pad($code, 4, "0", STR_PAD_LEFT);
+
+        $teens = Teen::all();
+        return view("records.create")->with(["code" => $str_code, "teens" => $teens]);
     }
 
     /**
@@ -28,7 +34,12 @@ class RecordController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $record = new Record();
+
+        $record->fill($request->all());
+        $record->save();
+
+        return redirect()->route("records.index");
     }
 
     /**

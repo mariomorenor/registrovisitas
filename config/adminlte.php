@@ -298,6 +298,13 @@ return [
             'can' => 'read_teen'
         ],
         [
+            'text' => 'Casos',
+            'route' => 'records.index',
+            'icon' => 'fas fa-scroll',
+            'active' => ['records/*'],
+            'can' => 'read_record'
+        ],
+        [
             'text' => 'Contactos',
             'route' => 'contacts.index',
             'icon' => 'fas fa-address-book',
