@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -61,14 +63,30 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->fill($request->except('password'));
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if ($request->has('image')) {
+            $path = Storage::putFileAs(
+                'users/avatars',
+                $request->file('image'),
+                "avatar" . Auth::user()->id . "." . $request->file('image')->extension()
+            );
+            $user->image = $path;
+        }
 
         if ($request->has('password') && $request->password != null) {
             $user->password = $request->password;
         }
 
         $user->save();
-        $user->syncRoles([$request->role]);
+
+        if ($request->has('role')) {
+            $user->syncRoles([$request->role]);
+        }
+
+        if ($request->has("profile")) {
+            return redirect()->route("profile");
+        }
 
         return redirect()->route("users.index");
     }
@@ -84,6 +102,7 @@ class UserController extends Controller
 
     function profile()
     {
-        return view("users.profile");
+        $user = Auth::user();
+        return view("users.profile")->with(["user" => $user]);
     }
 }
