@@ -9,7 +9,7 @@
                 <div class="d-flex justify-content-between">
                     <h1 class="m-0 text-dark">Editar Usuario</h1>
                     <div class="">
-                        <a href="{{ route('users.index') }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i>
+                        <a href="{{ url()->previous() }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i>
                             Regresar</a>
                     </div>
                 </div>

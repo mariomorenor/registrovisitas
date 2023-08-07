@@ -291,18 +291,18 @@ return [
 
     'menu' => [
         [
-            'text' => 'Usuarios',
-            'route' => 'teens.index',
-            'icon' => 'fas fa-user-friends',
-            'active' => ['teens/*'],
-            'can' => 'read_teen'
-        ],
-        [
             'text' => 'Casos',
             'route' => 'records.index',
             'icon' => 'fas fa-scroll',
             'active' => ['records/*'],
             'can' => 'read_record'
+        ],
+        [
+            'text' => 'Usuarios',
+            'route' => 'teens.index',
+            'icon' => 'fas fa-user-friends',
+            'active' => ['teens/*'],
+            'can' => 'read_teen'
         ],
         [
             'text' => 'Contactos',
