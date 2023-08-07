@@ -22,8 +22,8 @@ class RecordController extends Controller
      */
     public function create()
     {
-        $code = Record::max("code") ?? 1;
-        $str_code = str_pad($code, 4, "0", STR_PAD_LEFT);
+        $code = Record::max("code");
+        $str_code = str_pad(intval($code) + 1 , 4, "0", STR_PAD_LEFT);
 
         $teens = Teen::all();
         return view("records.create")->with(["code" => $str_code, "teens" => $teens]);
@@ -45,9 +45,11 @@ class RecordController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Record $record)
+    public function show(Record $record, Request $request)
     {
-        //
+        if ($request->has("delete")) {
+            return view("records.delete")->with(["record" => $record]);
+        }
     }
 
     /**
@@ -55,7 +57,8 @@ class RecordController extends Controller
      */
     public function edit(Record $record)
     {
-        //
+        $teens = Teen::all();
+        return view("records.edit")->with(["record" => $record, "teens" => $teens]);
     }
 
     /**
@@ -63,7 +66,10 @@ class RecordController extends Controller
      */
     public function update(Request $request, Record $record)
     {
-        //
+        $record->fill($request->all());
+        $record->save();
+
+        return redirect()->route("records.index");
     }
 
     /**
@@ -71,6 +77,8 @@ class RecordController extends Controller
      */
     public function destroy(Record $record)
     {
-        //
+        $record->delete();
+
+        return redirect()->route("records.index");
     }
 }

@@ -9,7 +9,7 @@
                 <div class="d-flex justify-content-between">
                     <h1 class="m-0 text-dark">Editar Caso</h1>
                     <div class="">
-                        <a href="{{ url()->previous() }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i>
+                        <a href="{{ url([$teen])->previous() }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i>
                             Regresar</a>
                     </div>
                 </div>
@@ -46,7 +46,8 @@
                             <option value="{{ $teen->id }}">{{ $teen->full_name }}</option>
                         @endforeach
                     </select>
-                    <a href="{{ route('teens.edit', ['teen' => $record->teen_id]) }}">Ver Usuario <i class="fas fa-arrow-right"></i></a>
+                    <a id="link_teen" href="{{ route('teens.edit', ['teen' => $record->teen_id]) }}">Ver Usuario <i
+                            class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             <div class="row mt-4">
@@ -74,6 +75,7 @@
 @push('js')
     <script>
         let $select_teen = $("#teen");
+        let $link_teen = $("#link_teen");
 
         $select_teen.select2({
             placeholder: "Seleccione...",
@@ -83,5 +85,18 @@
 
         $select_teen.val("{{ $record->teen_id }}");
         $select_teen.trigger("change");
+
+
+        $select_teen.on('select2:clear', function(e) {
+            $link_teen.attr("href", "#");
+            $link_teen.prop("hidden", true);
+        });
+
+        $select_teen.on('select2:select', function(e) {
+            $teen_url = "{{ route('teens.edit', ['teen' => '%s']) }}"
+            $url = $teen_url.replace("%s", $select_teen.val());
+            $link_teen.attr("href", $url);
+            $link_teen.prop("hidden", false);
+        });
     </script>
 @endpush

@@ -45,6 +45,8 @@
                             <option value="{{ $teen->id }}">{{ $teen->full_name }}</option>
                         @endforeach
                     </select>
+                    <a id="link_teen" hidden href="/">Ver Usuario <i
+                            class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             <div class="row mt-4">
@@ -70,11 +72,24 @@
 @push('js')
     <script>
         let $select_teen = $("#teen");
+        let $link_teen = $("#link_teen");
 
         $select_teen.select2({
             placeholder: "Seleccione...",
             theme: 'bootstrap4',
             allowClear: true,
+        });
+
+        $select_teen.on('select2:clear', function(e) {
+            $link_teen.attr("href", "#");
+            $link_teen.prop("hidden", true);
+        });
+
+        $select_teen.on('select2:select', function(e) {
+            $teen_url = "{{ route('teens.edit', ['teen' => '%s']) }}"
+            $url = $teen_url.replace("%s", $select_teen.val());
+            $link_teen.attr("href", $url);
+            $link_teen.prop("hidden", false);
         });
     </script>
 @endpush
