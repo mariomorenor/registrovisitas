@@ -9,19 +9,6 @@ use Illuminate\Support\Facades\Storage;
 class ReportController extends Controller
 {
 
-    public function upload(Request $request)
-    {
-
-        if ($request->has('file')) {
-            Storage::putFileAs(
-                "records/$request->code",
-                $request->file('file'),
-                $request->file('file')->getClientOriginalName()
-            );
-        }
-        return response()->json(["msg" => "Ok"]);
-    }
-
     /**
      * Display a listing of the resource.
      */

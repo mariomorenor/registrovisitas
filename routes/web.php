@@ -32,8 +32,8 @@ Route::middleware(["auth"])->group(function () {
     Route::resource("contacts", ContactController::class);
     Route::resource("teens", TeenController::class);
     Route::resource("records", RecordController::class);
-
+    Route::post('files/upload', [RecordController::class, "upload"]);
+    
     Route::get("mi-perfil", [UserController::class, "profile"])->name("profile");
-
+    
 });
-Route::post('files/upload', [ReportController::class, "upload"]);

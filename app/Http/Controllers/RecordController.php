@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Record;
 use App\Models\Teen;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class RecordController extends Controller
 {
@@ -81,4 +82,19 @@ class RecordController extends Controller
 
         return redirect()->route("records.index");
     }
+
+
+    public function upload(Request $request)
+    {
+        
+        if ($request->has('file')) {
+            Storage::putFileAs(
+                "records/$request->code",
+                $request->file('file'),
+                $request->file('file')->getClientOriginalName()
+            );
+        }
+        return response()->json(["msg" => "Ok"]);
+    }
+
 }
