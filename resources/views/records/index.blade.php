@@ -35,7 +35,17 @@
                         @foreach ($records as $record)
                             <tr>
                                 <td>{{ $record->code }}</td>
-                                <td>{{ $record->mode }}</td>
+                                <td>
+                                    @switch($record->mode)
+                                        @case('AF')
+                                            <span>APOYO FAMILIAR</span>
+                                        @break
+
+                                        @case('CF')
+                                            <span>CUSTODIO FAMILIAR</span>
+                                        @break
+                                    @endswitch
+                                </td>
                                 <td>{{ $record->teen->full_name }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('records.edit', ['record' => $record]) }}" class="btn btn-primary"><i

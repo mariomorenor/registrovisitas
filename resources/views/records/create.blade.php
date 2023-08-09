@@ -33,8 +33,8 @@
                 <div class="col-12 col-sm-4">
                     <label for="mode">Tipo</label>
                     <select name="mode" id="mode" class="form-control">
-                        <option value="ACF">APOYO Y CUSTODIA FAMILIAR</option>
-                        <option value="ACF">APOYO Y CUSTODIA FAMILIAR</option>
+                        <option value="AF">APOYO FAMILIAR</option>
+                        <option value="CF">CUSTODIO FAMILIAR</option>
                     </select>
                 </div>
                 <div class="col-12 col-sm-4">
@@ -45,10 +45,10 @@
                             <option value="{{ $teen->id }}">{{ $teen->full_name }}</option>
                         @endforeach
                     </select>
-                    <a id="link_teen" hidden href="/">Ver Usuario <i
-                            class="fas fa-arrow-right"></i></a>
+                    <a id="link_teen" hidden href="/">Ver Usuario <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
+
             <div class="row mt-4">
                 <div class="col-12 col-sm-4 mx-auto">
                     <button class="btn btn-info btn-block"><i class="fas fa-save"></i> GUARDAR</button>
@@ -57,17 +57,6 @@
         </form>
     </div>
 @endsection
-
-@push('js')
-    <script>
-        let $select_contact = $("#contact");
-
-        $select_contact.select2({
-            placeholder: "Seleccione...",
-            theme: 'bootstrap4'
-        });
-    </script>
-@endpush
 
 @push('js')
     <script>
