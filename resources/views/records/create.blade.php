@@ -33,8 +33,8 @@
                 <div class="col-12 col-sm-4">
                     <label for="mode">Tipo</label>
                     <select name="mode" id="mode" class="form-control">
-                        <option value="ACF">APOYO Y CUSTODIA FAMILIAR</option>
-                        <option value="ACF">APOYO Y CUSTODIA FAMILIAR</option>
+                        <option value="AF">APOYO FAMILIAR</option>
+                        <option value="CF">CUSTODIO FAMILIAR</option>
                     </select>
                 </div>
                 <div class="col-12 col-sm-4">

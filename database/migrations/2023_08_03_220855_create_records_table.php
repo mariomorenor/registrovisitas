@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('records', function (Blueprint $table) {
             $table->id();
             $table->string("code");
-            $table->string("mode");
-            $table->foreignId("teen_id")->constrained("teens");
+            $table->enum("mode", ["AF", "CF"]);
+            $table->foreignId("teen_id")->constrained("teens")->onDelete(null);
             $table->timestamps();
         });
     }

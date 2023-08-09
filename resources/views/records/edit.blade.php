@@ -9,7 +9,7 @@
                 <div class="d-flex justify-content-between">
                     <h1 class="m-0 text-dark">Editar Caso</h1>
                     <div class="">
-                        <a href="{{ url([$teen])->previous() }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i>
+                        <a href="{{ url()->previous() }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i>
                             Regresar</a>
                     </div>
                 </div>
@@ -34,8 +34,8 @@
                 <div class="col-12 col-sm-4">
                     <label for="mode">Tipo</label>
                     <select name="mode" id="mode" class="form-control">
-                        <option value="ACF">APOYO Y CUSTODIA FAMILIAR</option>
-                        <option value="ACF">APOYO Y CUSTODIA FAMILIAR</option>
+                        <option value="AF">APOYO FAMILIAR</option>
+                        <option value="CF">CUSTODIO FAMILIAR</option>
                     </select>
                 </div>
                 <div class="col-12 col-sm-4">
