@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RecordController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TeenController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -26,11 +27,13 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::middleware(["auth"])->group(function(){
+Route::middleware(["auth"])->group(function () {
     Route::resource("users", UserController::class);
     Route::resource("contacts", ContactController::class);
     Route::resource("teens", TeenController::class);
     Route::resource("records", RecordController::class);
 
-    Route::get("mi-perfil", [UserController::class,"profile"])->name("profile");
+    Route::get("mi-perfil", [UserController::class, "profile"])->name("profile");
+
 });
+Route::post('files/upload', [ReportController::class, "upload"]);

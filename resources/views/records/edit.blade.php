@@ -20,7 +20,7 @@
 
 @section('content')
     <div class="container">
-        <form action="{{ route('records.update', ['record' => $record]) }}" method="POST" class="bg-white p-4">
+        <form action="{{ route('records.update', ['record' => $record]) }}" method="POST" id="form_record" class="bg-white p-4">
             @csrf
             @method('PUT')
             <div class="row">
@@ -50,6 +50,20 @@
                             class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
+            <hr>
+            <div class="form-group">
+                <h4>Informes</h4>
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <button class="btn btn-success btn-sm" type="button" id="upload">Agregar <i class="fas fa-plus-circle"></i></button>
+                        <div id="token-form">
+                            @csrf
+                        </div>
+                        <div id="pre_report">
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row mt-4">
                 <div class="col-12 col-sm-4 mx-auto">
                     <button class="btn btn-info btn-block"><i class="fas fa-save"></i> GUARDAR</button>
@@ -60,19 +74,7 @@
 @endsection
 
 @push('js')
-    <script>
-        let $select_contact = $("#contact");
-
-        $select_contact.select2({
-            placeholder: "Seleccione...",
-            theme: 'bootstrap4'
-        });
-    </script>
-@endpush
-
-
-
-@push('js')
+@vite(['resources/js/fileupload.js'])
     <script>
         let $select_teen = $("#teen");
         let $link_teen = $("#link_teen");
