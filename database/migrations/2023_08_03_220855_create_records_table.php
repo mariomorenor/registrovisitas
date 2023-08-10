@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("code");
             $table->enum("mode", ["AF", "CF"]);
-            $table->foreignId("teen_id")->constrained("teens")->onDelete(null);
+            $table->foreignId("teen_id")->constrained("teens");
             $table->timestamps();
         });
     }

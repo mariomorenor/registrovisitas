@@ -19,4 +19,9 @@ class Teen extends Model
             get: fn () => "{$this->name} {$this->last_name}",
         );
     }
+
+    public function records()
+    {
+        return $this->hasMany(Record::class);   
+    }
 }

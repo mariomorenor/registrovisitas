@@ -75,8 +75,16 @@ class TeenController extends Controller
      */
     public function destroy(Teen $teen)
     {
-        $teen->delete();
 
-        return redirect()->route("teens.index");
+        try {
+            $teen->delete();
+            return redirect()->route("teens.index");
+        } catch (\Illuminate\Database\QueryException $th) {
+            $records = $teen->records->pluck("code");
+
+            $msg = " El registro que intenta eliminar está relacionado con:";
+            $model = "Casos";
+            return view("layouts.constraint_delete")->with(["msg" => $msg, "model" => $model, "records" => $records]);
+        }
     }
 }
