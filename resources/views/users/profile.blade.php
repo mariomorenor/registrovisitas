@@ -11,7 +11,7 @@
             <input type="hidden" name="profile">
             <div class="row">
                 <div class="col-12 col-sm-4 mx-auto text-center">
-                    <img src="{{ Storage::url($user->image) }}" class="avatar" alt="">
+                    <img src="{{ $user->image ? Storage::url($user->image) : asset('img/default_user.png') }}" class="avatar" alt="">
                 </div>
             </div>
             <div class="row mt-2">

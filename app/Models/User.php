@@ -48,7 +48,8 @@ class User extends Authenticatable
 
     public function adminlte_image()
     {
-        return Storage::url(Auth::user()->image);
+        $user = Auth::user();
+        return $user->image ? Storage::url($user->image) : asset("img/default_user.png");
     }
 
     public function adminlte_desc()
