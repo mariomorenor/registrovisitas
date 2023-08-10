@@ -73,8 +73,17 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        $contact->delete();
 
-        return redirect()->route("contacts.index");
+        try {
+            $contact->delete();
+
+            return redirect()->route("contacts.index");
+        } catch (\Illuminate\Database\QueryException $th) {
+            $records = $contact->teens->pluck("full_name");
+
+            $msg = " El registro que intenta eliminar está relacionado con:";
+            $model = "Usuarios";
+            return view("layouts.constraint_delete")->with(["msg" => $msg, "model" => $model, "records" => $records]);
+        }
     }
 }

@@ -20,4 +20,9 @@ class Contact extends Model
             get: fn () => "{$this->name} {$this->last_name}",
         );
     }
+
+    public function teens()
+    {
+        return $this->hasMany(Teen::class);
+    }
 }

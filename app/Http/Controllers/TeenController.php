@@ -75,7 +75,6 @@ class TeenController extends Controller
      */
     public function destroy(Teen $teen)
     {
-
         try {
             $teen->delete();
             return redirect()->route("teens.index");
