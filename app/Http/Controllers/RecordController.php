@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Record;
 use App\Models\Teen;
+use App\Models\Attachment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -24,7 +25,7 @@ class RecordController extends Controller
     public function create()
     {
         $code = Record::max("code");
-        $str_code = str_pad(intval($code) + 1 , 4, "0", STR_PAD_LEFT);
+        $str_code = str_pad(intval($code) + 1, 4, "0", STR_PAD_LEFT);
 
         $teens = Teen::all();
         return view("records.create")->with(["code" => $str_code, "teens" => $teens]);
@@ -86,13 +87,20 @@ class RecordController extends Controller
 
     public function upload(Request $request)
     {
-        
+
         if ($request->has('file')) {
-            Storage::putFileAs(
+            $attachment_name = $request->file('file')->getClientOriginalName();
+            $path = Storage::putFile(
                 "records/$request->code",
                 $request->file('file'),
-                $request->file('file')->getClientOriginalName()
             );
+
+            $record = Record::find($request->record_id);
+
+            $record->attachments()->create([
+                "name" => $attachment_name,
+                "path" => $path
+            ]);
         }
         return response()->json(["msg" => "Ok"]);
     }

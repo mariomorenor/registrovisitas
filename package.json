@@ -7,7 +7,7 @@
     },
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
-        "axios": "^1.1.2",
+        "axios": "^1.4.0",
         "bootstrap": "^5.2.3",
         "laravel-vite-plugin": "^0.7.5",
         "sass": "^1.56.1",
@@ -17,6 +17,7 @@
         "@uppy/core": "^3.3.1",
         "@uppy/dashboard": "^3.5.0",
         "@uppy/form": "^3.0.2",
-        "@uppy/xhr-upload": "^3.3.1"
+        "@uppy/xhr-upload": "^3.3.1",
+        "sweetalert2": "^11.7.22"
     }
 }

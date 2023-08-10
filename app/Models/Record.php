@@ -9,9 +9,14 @@ class Record extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $guarded = ['files'];
 
     function teen() {
         return $this->belongsTo(Teen::class);
+    }
+
+    public function attachments()
+    {
+        return $this->hasMany(Attachment::class);
     }
 }

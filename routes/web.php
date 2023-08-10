@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttachmentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\ReportController;
@@ -33,6 +34,8 @@ Route::middleware(["auth"])->group(function () {
     Route::resource("teens", TeenController::class);
     Route::resource("records", RecordController::class);
     Route::post('files/upload', [RecordController::class, "upload"]);
+    
+    Route::resource("attachments",AttachmentController::class);
     
     Route::get("mi-perfil", [UserController::class, "profile"])->name("profile");
     
