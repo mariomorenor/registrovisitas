@@ -24,11 +24,8 @@ class RecordController extends Controller
      */
     public function create()
     {
-        $code = Record::max("code");
-        $str_code = str_pad(intval($code) + 1, 4, "0", STR_PAD_LEFT);
-
         $teens = Teen::all();
-        return view("records.create")->with(["code" => $str_code, "teens" => $teens]);
+        return view("records.create")->with(["teens" => $teens]);
     }
 
     /**

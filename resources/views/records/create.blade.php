@@ -25,8 +25,8 @@
             <div class="row">
                 <div class="col-12 col-sm-4">
                     <label for="code">Codigo</label>
-                    <input value="{{ $code }}" type="text" name="code" id="code" class="form-control"
-                        required autocomplete="off" readonly>
+                    <input type="text" name="code" id="code" class="form-control"
+                        required autocomplete="off">
                 </div>
             </div>
             <div class="row">
