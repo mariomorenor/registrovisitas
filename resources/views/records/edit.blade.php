@@ -19,7 +19,7 @@
 @stop
 
 @section('content')
-    <div class="container">
+    <div class="container mb-5">
         <form action="{{ route('records.update', ['record' => $record]) }}" method="POST" id="form_record"
             class="bg-white p-4 shadow">
             @csrf
@@ -101,6 +101,36 @@
                 </div>
             </div>
         </form>
+        <hr>
+        <div class="card p-2 p-sm-4">
+            <div class="card-content">
+                <table class="display table table-sm" id="table-visits" width="100%">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Fecha y Hora</th>
+                            <th>Descripcion</th>
+                            <th>Observaciones</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($record->visits as $visit)
+                            <tr>
+                                <td>{{ $visit->datetime }}</td>
+                                <td>{{ $visit->description }}</td>
+                                <td>{{ $visit->observations }}</td>
+                                <td class="text-center">
+                                    <a href="{{ route('visits.edit', ['visit' => $visit]) }}" class="btn btn-primary"><i
+                                            class="fas fa-edit"></i></a>
+                                    <a href="{{ route('visits.show', ['visit' => $visit, 'delete' => true]) }}"
+                                        class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 @endsection
 
@@ -130,6 +160,11 @@
             $url = $teen_url.replace("%s", $select_teen.val());
             $link_teen.attr("href", $url);
             $link_teen.prop("hidden", false);
+        });
+
+
+        let table = new DataTable('#table-visits', {
+            responsive: true,
         });
     </script>
 @endpush
