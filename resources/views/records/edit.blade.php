@@ -8,10 +8,10 @@
             <div class="card-content">
                 <div class="d-flex justify-content-between">
                     <h1 class="m-0 text-dark">Editar Caso</h1>
-                    <div class="">
+                    {{-- <div class="">
                         <a href="{{ route('records.index') }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i>
                             Regresar</a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
                                     <option value="{{ $teen->id }}">{{ $teen->full_name }}</option>
                                 @endforeach
                             </select>
-                            <a id="link_teen" href="{{ route('teens.edit', ['teen' => $record->teen_id]) }}">Ver Usuario <i
+                            <a id="link_teen" target="_blank" href="{{ route('teens.edit', ['teen' => $record->teen_id]) }}">Ver Usuario <i
                                     class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>

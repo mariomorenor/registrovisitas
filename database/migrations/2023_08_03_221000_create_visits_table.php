@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('visits', function (Blueprint $table) {
             $table->id();
-            $table->dateTime("datetime_visit");
+            $table->dateTime("datetime");
             $table->text("description");
             $table->text("observations")->nullable();
-            $table->foreignId("record_id")->constrained("records");
+            $table->foreignId("record_id")->constrained("records")->onDelete("cascade");
             $table->timestamps();
         });
     }

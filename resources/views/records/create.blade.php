@@ -45,7 +45,7 @@
                             <option value="{{ $teen->id }}">{{ $teen->full_name }}</option>
                         @endforeach
                     </select>
-                    <a id="link_teen" hidden href="/">Ver Usuario <i class="fas fa-arrow-right"></i></a>
+                    <a id="link_teen" target="_blank" hidden href="/">Ver Usuario <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
 

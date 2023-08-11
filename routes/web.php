@@ -6,6 +6,7 @@ use App\Http\Controllers\RecordController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TeenController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VisitController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -34,9 +35,10 @@ Route::middleware(["auth"])->group(function () {
     Route::resource("teens", TeenController::class);
     Route::resource("records", RecordController::class);
     Route::post('files/upload', [RecordController::class, "upload"]);
-    
-    Route::resource("attachments",AttachmentController::class);
-    
+
+    Route::resource("attachments", AttachmentController::class);
+
     Route::get("mi-perfil", [UserController::class, "profile"])->name("profile");
-    
+
+    Route::resource("visits", VisitController::class);
 });

@@ -19,4 +19,8 @@ class Record extends Model
     {
         return $this->hasMany(Attachment::class);
     }
+
+    public function visits() {
+        return $this->hasMany(Visit::class);
+    }
 }

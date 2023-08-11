@@ -195,7 +195,7 @@
             Woops! <br>No puedes eliminar un registro que depende de otro!
         </h1>
         <h2 class="error-subtitle">
-            Intenta eliminar el registro padre para continuar...
+            Intenta eliminar el registro relacionado para continuar...
             <a class="btn btn-warning mb-3" href="{{ url()->previous() }}">Regresar</a>
         </h2>
 

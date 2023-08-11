@@ -2,18 +2,18 @@
 
 @section('title', 'AdminLTE')
 
-@section('content_header')
-    <h1 class="m-0 text-dark">Dashboard</h1>
-@stop
 
 @section('content')
+<div class="container pt-5">
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <p class="mb-0">You are logged in!</p>
+                    <h1 class="m-0 text-dark">Bienvenid@! <span class="text-success font-weight-bold">{{Auth::user()->name}}</span></h1>
+                    <h3>Por favor, Selecciona una opcion del menu lateral</h3>
                 </div>
             </div>
         </div>
     </div>
+</div>
 @stop

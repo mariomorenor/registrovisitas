@@ -8,10 +8,10 @@
             <div class="card-content">
                 <div class="d-flex justify-content-between">
                     <h1 class="m-0 text-dark">Editar Contacto</h1>
-                    <div class="">
+                    {{-- <div class="">
                         <a href="{{ url()->previous() }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i>
                             Regresar</a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

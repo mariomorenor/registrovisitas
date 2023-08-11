@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Record;
 use App\Models\Visit;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class VisitController extends Controller
      */
     public function index()
     {
-        //
+        $visits = Visit::all();
+        return view("visits.index")->with(["visits" => $visits]);
     }
 
     /**
@@ -20,7 +22,8 @@ class VisitController extends Controller
      */
     public function create()
     {
-        //
+        $records = Record::all();
+        return view("visits.create")->with(["records" => $records]);
     }
 
     /**
@@ -28,15 +31,21 @@ class VisitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $visit = new Visit();
+        $visit->fill($request->all());
+        $visit->save();
+
+        return redirect()->route("visits.index");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Visit $visit)
+    public function show(Visit $visit, Request $request)
     {
-        //
+        if ($request->has("delete")) {
+            return view("visits.delete")->with(["visit" => $visit]);
+        }
     }
 
     /**
@@ -44,7 +53,8 @@ class VisitController extends Controller
      */
     public function edit(Visit $visit)
     {
-        //
+        $records = Record::all();
+        return view("visits.edit")->with(["visit" => $visit, "records" => $records]);
     }
 
     /**
@@ -52,7 +62,10 @@ class VisitController extends Controller
      */
     public function update(Request $request, Visit $visit)
     {
-        //
+        $visit->fill($request->all());
+        $visit->save();
+
+        return redirect()->route("visits.index");
     }
 
     /**
@@ -60,6 +73,7 @@ class VisitController extends Controller
      */
     public function destroy(Visit $visit)
     {
-        //
+        $visit->delete();
+        return redirect()->route("visits.index");
     }
 }

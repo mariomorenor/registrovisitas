@@ -291,6 +291,13 @@ return [
 
     'menu' => [
         [
+            'text' => 'Visitas',
+            'route' => 'visits.index',
+            'icon' => 'fas fa-calendar-check',
+            'active' => ['visits/*'],
+            'can' => 'read_visit'
+        ],
+        [
             'text' => 'Casos',
             'route' => 'records.index',
             'icon' => 'fas fa-scroll',

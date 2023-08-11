@@ -76,9 +76,18 @@ class RecordController extends Controller
      */
     public function destroy(Record $record)
     {
-        $record->delete();
 
-        return redirect()->route("records.index");
+        try {
+            $record->delete();
+
+            return redirect()->route("records.index");
+        } catch (\Illuminate\Database\QueryException $th) {
+            $records = $record->visits->pluck("datetime");
+
+            $msg = " El registro que intenta eliminar está relacionado con:";
+            $model = "Visitas";
+            return view("layouts.constraint_delete")->with(["msg" => $msg, "model" => $model, "records" => $records]);
+        }
     }
 
 
@@ -101,5 +110,4 @@ class RecordController extends Controller
         }
         return response()->json(["msg" => "Ok"]);
     }
-
 }
