@@ -37,6 +37,18 @@
                     <label for="phone">Celular</label>
                     <input type="text" class="form-control" name="phone" id="phone" autocomplete="off">
                 </div>
+                <div class="col-12 col-sm-4">
+                    <label for="relationship">Parentesco</label>
+                    <select name="relationship" id="relationship" class="form-control">
+                        <option value="">Seleccione...</option>
+                        <option value="padre">Padre</option>
+                        <option value="madre">Madre</option>
+                        <option value="tio">Tio</option>
+                        <option value="tia">Tia</option>
+                        <option value="abuelos">Abuelos</option>
+                        <option value="otros">Otros</option>
+                    </select>
+                </div>
             </div>
             <div class="row mt-4">
                 <div class="col-12 col-sm-4 mx-auto">

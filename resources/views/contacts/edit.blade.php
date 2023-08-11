@@ -27,17 +27,32 @@
             <div class="row">
                 <div class="col-12 col-sm-6">
                     <label for="name">Nombres</label>
-                    <input value="{{$contact->name}}" type="text" name="name" id="name" class="form-control" required>
+                    <input value="{{ $contact->name }}" type="text" name="name" id="name" class="form-control"
+                        required>
                 </div>
                 <div class="col-12 col-sm-6">
                     <label for="last_name">Apellidos</label>
-                    <input value="{{$contact->last_name}}" type="text" name="last_name" id="last_name" class="form-control" required>
+                    <input value="{{ $contact->last_name }}" type="text" name="last_name" id="last_name"
+                        class="form-control" required>
                 </div>
             </div>
             <div class="row mt-2">
                 <div class="col-12 col-sm-4">
                     <label for="phone">Celular</label>
-                    <input value="{{$contact->phone}}" type="text" class="form-control" name="phone" id="phone" autocomplete="off">
+                    <input value="{{ $contact->phone }}" type="text" class="form-control" name="phone" id="phone"
+                        autocomplete="off">
+                </div>
+                <div class="col-12 col-sm-4">
+                    <label for="relationship">Parentesco</label>
+                    <select name="relationship" id="relationship" class="form-control">
+                        <option value="">Seleccione...</option>
+                        <option @if ($contact->relationship == 'padre') selected @endif value="padre">Padre</option>
+                        <option @if ($contact->relationship == 'madre') selected @endif value="madre">Madre</option>
+                        <option @if ($contact->relationship == 'tio') selected @endif value="tio">Tio</option>
+                        <option @if ($contact->relationship == 'tia') selected @endif value="tia">Tia</option>
+                        <option @if ($contact->relationship == 'abuelos') selected @endif value="abuelos">Abuelos</option>
+                        <option @if ($contact->relationship == 'otros') selected @endif value="otros">Otros</option>
+                    </select>
                 </div>
             </div>
             <div class="row mt-4">
