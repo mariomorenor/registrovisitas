@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->dateTime("datetime");
             $table->text("description");
+            $table->string("technician");
             $table->text("observations")->nullable();
             $table->foreignId("record_id")->constrained("records")->onDelete("cascade");
             $table->timestamps();

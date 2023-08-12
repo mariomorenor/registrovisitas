@@ -25,17 +25,30 @@
             <div class="row">
                 <div class="col-12 col-sm-3">
                     <label for="datetime">Fecha y Hora</label>
-                    <input type="datetime-local" value="{{Carbon\Carbon::now()}}" name="datetime" id="datetime" class="form-control"
-                        required autocomplete="off">
+                    <input type="datetime-local" value="{{ Carbon\Carbon::now() }}" name="datetime" id="datetime"
+                        class="form-control" required autocomplete="off">
                 </div>
                 <div class="col-12 col-sm-4">
                     <label for="record">Caso</label>
                     <select name="record_id" id="record_id" class="form-control" required>
                         <option value="">Seleccione...</option>
                         @foreach ($records as $record)
-                            <option value="{{$record->id}}">{{$record->code}} | {{$record->teen->full_name}}</option>
+                            <option value="{{ $record->id }}">{{ $record->code }} | {{ $record->teen->full_name }}
+                            </option>
                         @endforeach
                     </select>
+                </div>
+                <div class="col-12 col-sm-4">
+                    <div class="form-group">
+                        <label for="technician">Tecnico</label>
+                        <select name="technician" id="technician" class="form-control">
+                            <option @if (Auth::user()->occupation == 'Psicologo') selected @endif value="Psicologo">Psicologo</option>
+                            <option @if (Auth::user()->occupation == 'Facilitador Familiar') selected @endif value="Facilitador Familiar">Facilitador
+                                Familiar</option>
+                            <option @if (Auth::user()->occupation == 'Trabajador Social') selected @endif value="Trabajador Social">Trabajador Social
+                            </option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="row mt-2">

@@ -41,15 +41,29 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="col-12 col-sm-4">
+                    <div class="form-group">
+                        <label for="technician">Tecnico</label>
+                        <select name="technician" id="technician" class="form-control">
+                            <option @if ($visit->technician == 'Psicologo') selected @endif value="Psicologo">Psicologo</option>
+                            <option @if ($visit->technician == 'Facilitador Familiar') selected @endif value="Facilitador Familiar">
+                                Facilitador
+                                Familiar</option>
+                            <option @if ($visit->technician == 'Trabajador Social') selected @endif value="Trabajador Social">Trabajador
+                                Social
+                            </option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="row mt-2">
                 <div class="col-12 col-sm-6">
                     <label for="description">Descripcion</label>
-                    <textarea name="description" rows="10" id="description" class="form-control">{{$visit->description}}</textarea>
+                    <textarea name="description" rows="10" id="description" class="form-control">{{ $visit->description }}</textarea>
                 </div>
                 <div class="col-12 col-sm-6">
                     <label for="observations">Observaciones</label>
-                    <textarea name="observations" rows="10" id="observations" class="form-control">{{$visit->observations}}</textarea>
+                    <textarea name="observations" rows="10" id="observations" class="form-control">{{ $visit->observations }}</textarea>
                 </div>
             </div>
 
