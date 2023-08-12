@@ -22,7 +22,7 @@ class UserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'password' => 'confirmed|min:8'
+            'password' => 'nullable|confirmed|min:8'
         ];
     }
 

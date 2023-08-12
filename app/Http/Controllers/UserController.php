@@ -66,6 +66,7 @@ class UserController extends Controller
     {
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->occupation = $request->occupation;
         if ($request->has('image')) {
             $path = Storage::putFileAs(
                 'users/avatars',

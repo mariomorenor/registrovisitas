@@ -11,7 +11,8 @@
             <input type="hidden" name="profile">
             <div class="row">
                 <div class="col-12 col-sm-4 mx-auto text-center">
-                    <img src="{{ $user->image ? Storage::url($user->image) : asset('img/default_user.png') }}" class="avatar" alt="">
+                    <img src="{{ $user->image ? Storage::url($user->image) : asset('img/default_user.png') }}" class="avatar"
+                        alt="">
                 </div>
             </div>
             <div class="row mt-2">
@@ -29,9 +30,18 @@
                             readonly>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="image">Imagen:</label>
-                    <input type="file" name="image" class="form-control" accept="image/png, image/jpeg, image/jpg">
+                <div class="col-12 col-sm-4">
+                    <div class="form-group">
+                        <label for="occupation">Ocupacion:</label>
+                        <select name="occupation" id="occupation" class="form-control">
+                            <option value="" disabled selected>Seleccione...</option>
+                            <option @if ($user->occupation == 'Psicologo') selected @endif value="Psicologo">Psicologo</option>
+                            <option @if ($user->occupation == 'Facilitador Familiar') selected @endif value="Facilitador Familiar">
+                                Facilitador Familiar</option>
+                            <option @if ($user->occupation == 'Trabajador Social') selected @endif value="Trabajador Social">Trabajador
+                                Social</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -56,6 +66,12 @@
                         @error('password_confirm')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                    <div class="form-group">
+                        <label for="image">Imagen:</label>
+                        <input type="file" name="image" class="form-control" accept="image/png, image/jpeg, image/jpg">
                     </div>
                 </div>
             </div>
