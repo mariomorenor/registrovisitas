@@ -19,9 +19,5 @@ class UsersTableSeeder extends Seeder
             "password" => Hash::make("admin")
         ]);
 
-        User::updateOrCreate(["email" => "genoveva.mendozavera@gmail.com"], [
-            "name" => "Genoveva Mendoza",
-            "password" => Hash::make("123")
-        ]);
     }
 }

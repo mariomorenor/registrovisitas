@@ -18,8 +18,5 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->call(RolesPermissionsSeeder::class);
         
-        Contact::factory()->count(100)->create();
-        Teen::factory()->count(100)->create();
-        
     }
 }
